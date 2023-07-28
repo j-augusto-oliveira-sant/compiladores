@@ -1,4 +1,11 @@
+{% for token in tokens%}
 <div id="result">
-    <code>{{ result }}</code>
+        <h5><strong>Token</strong></h5>
+        <p><strong>Valor:</strong> {{ token.valor }}</p>
+        <p><strong>Lexema:</strong> {{ token.lexema }}</p>
+        <p><strong>Linha:</strong> {{ token.linha }}</p>
+        <p><strong>Posição Inicial:</strong> {{ token.pos_inicial }}</p>
+        <p><strong>Posição Final:</strong> {{ token.pos_final }}</p>
 </div>
+{% endfor %}
 
