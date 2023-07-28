@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Analise Lexica | Compiladores</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        div {
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            resize: vertical;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            display: block;
+            margin: 0 auto;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            font-family: monospace;
+            font-size: 16px;
+            background-color: #e6e6e6;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            line-height: 1.5;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="padding: 60px">
+        <h1 style="margin-bottom: 15px;">Analise Lexica | José Augusto Oliveira Sant'Ana</h1>
+        <p></p>
+        <form id="myForm" hx-post="/analise-lexica">
+            <textarea name="codigo" rows="5" cols="40" maxlength="250" placeholder="Escreva algum código separado por espaços:
+while ( x < 10 ) {
+    x = 10
+}"></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+    <div style="visibility: hidden;" id="result" hx-target="#result" hx-swap="outerHTML"></div>
+    <script src="https://unpkg.com/htmx.org@latest/dist/htmx.js"></script>
+</body>
+
+</html>
