@@ -31,7 +31,7 @@ def text_with_color(text, color):
     return coloring + text + "\u001b[0m"
 
 
-def analisador_lexico(codigo: str):
+def tokenize_code(codigo: str):
     tokens = []
     # tratar palavra
     word_positions = []
@@ -162,7 +162,3 @@ def analisador_lexico(codigo: str):
             )
 
     return tokens
-
-
-if __name__ == "__main__":
-    analisador_lexico()

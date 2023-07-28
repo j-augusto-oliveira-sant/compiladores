@@ -4,7 +4,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 
 # from pydantic import BaseModel
-from analisador_lexico import analisador_lexico
+from analisador_lexico import tokenize_code
 
 app = FastAPI(
     title="Compiladores",
@@ -24,5 +24,5 @@ def show_index(request: Request):
 def analise_lexica(request: Request, codigo: str = Form(..., max_length=250)):
     return templates.TemplateResponse(
         "result.html",
-        {"result": {"tokens": analisador_lexico(codigo)}, "request": request},
+        {"result": {"tokens": tokenize_code(codigo)}, "request": request},
     )
