@@ -22,7 +22,6 @@ def show_index(request: Request):
 
 @app.post("/analise-lexica")
 def analise_lexica(request: Request, codigo: str = Form(..., max_length=250)):
-    print(f"Enviado: {codigo}")
     return templates.TemplateResponse(
         "result.html",
         {"result": {"tokens": analisador_lexico(codigo)}, "request": request},

@@ -37,7 +37,8 @@ def analisador_lexico(codigo: str):
     word_positions = []
     lines = codigo.split("\n")
     for line_number, line in enumerate(lines, 1):
-        words = re.findall(r"\S+", line)
+        words = re.findall(r"\b\w+\b|[><=()+-{}]", line)
+        print(words)
         initial_column = 1
         for word in words:
             start = line.find(word, initial_column)
