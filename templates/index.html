@@ -72,7 +72,11 @@
         <h1 style="margin-bottom: 15px;">Analise Lexica | José Augusto Oliveira Sant'Ana</h1>
         <p></p>
         <form id="myForm" hx-post="/analise-lexica">
-            <textarea name="codigo" rows="5" cols="40" maxlength="10000" placeholder="Escreva algum código:
+            <select style="border-radius:5px;margin-bottom: 10px;border: 1px solid #ccc;" name="mode" id="mode">
+                <option value="json_mode">Ver Json</option>
+                <option value="formatted_mode">Ver Formatado</option>
+            </select>
+            <textarea name="codigo" id="codigo" rows="5" cols="40" maxlength="2500" placeholder="Escreva algum código:
 while (x<10) {
     x = 10
 }"></textarea>

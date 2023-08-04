@@ -16,13 +16,19 @@ templates = Jinja2Templates(directory="templates")
 
 
 @app.get("/", response_class=HTMLResponse)
-def show_index(request: Request):
+async def show_index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 
 @app.post("/analise-lexica")
-def analise_lexica(request: Request, codigo: str = Form(..., max_length=10000)):
-    return templates.TemplateResponse(
-        "result.html",
-        {"tokens": tokenize_code(codigo), "request": request},
-    )
+async def analise_lexica(
+    request: Request, codigo: str = Form(..., max_length=2500), mode: str = Form(...)
+):
+    tokens = tokenize_code(codigo)
+    if mode == "formatted_mode":
+        return templates.TemplateResponse(
+            "formatted_result.html",
+            {"tokens": tokens, "request": request},
+        )
+    else:
+        return tokens
