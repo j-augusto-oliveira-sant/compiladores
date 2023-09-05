@@ -3,8 +3,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 
-# from pydantic import BaseModel
-from analisador_lexico import tokenize_code
+from analisador_lexico import AnalisadorLexico
 
 app = FastAPI(
     title="Compiladores",
@@ -13,6 +12,8 @@ app = FastAPI(
 )
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
+
+analisador_lexico = AnalisadorLexico()
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -24,7 +25,7 @@ async def show_index(request: Request):
 async def analise_lexica(
     request: Request, codigo: str = Form(..., max_length=2500), mode: str = Form(...)
 ):
-    tokens = tokenize_code(codigo)
+    tokens = analisador_lexico.tokenize_code(codigo)
     if mode == "formatted_mode":
         return templates.TemplateResponse(
             "formatted_result.html",
